@@ -20,7 +20,7 @@ public class Camera {
 			center = focus.getLocation();
 		}
 		
-		zoom += 0.02;
+		zoom += 0.004;
 	}
 	
 	public void setFocus(Entity e) {
@@ -28,6 +28,10 @@ public class Camera {
 	}
 	
 	public float[] getOffset() {
-		return new float[] {center[0] - handler.getWidth() / 2, center[1] - handler.getHeight() / 2};
+		return new float[] {center[0] * zoom - handler.getWidth() / 2, center[1] * zoom - handler.getHeight() / 2};
+	}
+	
+	public float getZoom() {
+		return zoom;
 	}
 }

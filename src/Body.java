@@ -46,6 +46,6 @@ public class Body extends Entity{
 	
 	public void render(Graphics g, Camera camera) {
 		g.setColor(color);
-		g.fillOval((int) (((location[0]- radius)) * camera.getZoom() - camera.getOffset()[0]), (int) (((location[1] - radius) * camera.getZoom() - camera.getOffset()[1])), (int)(2*radius*camera.getZoom()), (int)(2*radius*camera.getZoom()));
+		g.fillOval((int) (((location[0] - radius)) * camera.getZoom() - camera.getOffset()[0]), (int) (((location[1] - radius) * camera.getZoom() - camera.getOffset()[1])), (int)(2*radius*camera.getZoom()), (int)(2*radius*camera.getZoom()));
 	}
 }

@@ -20,7 +20,7 @@ public class Camera {
 			center = focus.getLocation();
 		}
 		
-		zoom *= 1.004;
+		//zoom = 30;
 	}
 	
 	public void setFocus(Entity e) {

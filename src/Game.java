@@ -12,6 +12,8 @@ public class Game implements Runnable{
 	private Display display;
 	
 	private Handler handler;
+	private KeyHandler keyHandler;
+	
 	private Field system1;
 	
 	// Constructs a Game object for a window of int:width and int:height
@@ -26,9 +28,13 @@ public class Game implements Runnable{
 	// Initializes important variables
 	private void init() {
 		display = new Display(width, height);
+
+		keyHandler = new KeyHandler();
+		display.getJFrame().addKeyListener(keyHandler);
 		
-		handler = new Handler(this);
-		system1 = new Field(handler);
+		handler = new Handler(this, keyHandler);
+		
+		system1 = new Field(handler, keyHandler);
 	}
 	
 	// Sets up the game and runs the tick and render loop until the game is over
@@ -76,6 +82,7 @@ public class Game implements Runnable{
 	
 	// Calls tick() of all necessary objects
 	private void tick() {
+		keyHandler.tick();
 		system1.tick();
 	}
 	

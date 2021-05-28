@@ -28,7 +28,7 @@ public class Body extends Entity{
 		distance = 0;
 		angle = 0;
 		
-		location = new float[] {(float) (distance * Math.cos(angle)), (float) (distance * Math.sin(angle))};
+		location = new double[] {distance * Math.cos(angle), distance * Math.sin(angle)};
 		if (focus != null) {
 			location[0] += focus.getLocation()[0];
 			location[1] += focus.getLocation()[1];
@@ -37,7 +37,7 @@ public class Body extends Entity{
 	
 	public void tick() {
 		angle += angularVelocity;
-		location = new float[] {(float) (distance * Math.cos(angle)), (float) (distance * Math.sin(angle))};
+		location = new double[] {distance * Math.cos(angle), distance * Math.sin(angle)};
 		if (focus != null) {
 			location[0] += focus.getLocation()[0];
 			location[1] += focus.getLocation()[1];

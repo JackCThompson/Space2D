@@ -6,11 +6,15 @@ public class Body extends Entity{
 	Color color;
 	int radius;
 	
-	double angularVelocity;
-	double distance;
-	double angle;
+	private double angularVelocity;
+	private double distance;
+	private double angle;
+	private Body focus;
 	
-	public Body(Handler handler, Color color, int radius, double angularVelocity, double distance, double angle) {
+	public Body(Handler handler, Color color, 
+			int radius, double angularVelocity, 
+			double distance, double angle,
+			Body focus) {
 		super(handler);
 		
 		this.color = color;
@@ -19,16 +23,25 @@ public class Body extends Entity{
 		this.angularVelocity= angularVelocity;
 		this.distance = distance;
 		this.angle = angle;
+		this.focus = focus;
 		
 		distance = 0;
 		angle = 0;
 		
 		location = new float[] {(float) (distance * Math.cos(angle)), (float) (distance * Math.sin(angle))};
+		if (focus != null) {
+			location[0] += focus.getLocation()[0];
+			location[1] += focus.getLocation()[1];
+		}
 	}
 	
 	public void tick() {
 		angle += angularVelocity;
 		location = new float[] {(float) (distance * Math.cos(angle)), (float) (distance * Math.sin(angle))};
+		if (focus != null) {
+			location[0] += focus.getLocation()[0];
+			location[1] += focus.getLocation()[1];
+		}
 	}
 	
 	public void render(Graphics g, Camera camera) {

@@ -15,13 +15,15 @@ public class Field {
 		
 		entities = new ArrayList<Entity>();
 		
-		Body sun = new Body(handler, Color.YELLOW, 70, 0, 0, 0);
-		Body planet = new Body(handler, Color.ORANGE, 20, 0.005, 150, 0);
+		Body sun = new Body(handler, Color.YELLOW, 70, 0, 0, 0, null);
+		Body earth = new Body(handler, Color.BLUE, 20, 0.005, 180, 0, sun);
+		Body moon = new Body(handler, Color.GRAY, 6, 0.05, 50, 0, earth);
 		
 		entities.add(sun);
-		entities.add(planet);
+		entities.add(earth);
+		entities.add(moon);
 		
-		camera.setFocus(planet);
+		camera.setFocus(moon);
 	}
 	
 	public void tick() {

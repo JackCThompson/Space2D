@@ -3,9 +3,9 @@ public class PlayerController extends Controller{
 
 	private Handler handler;
 	
-	private double power = 0.2;
+	private double power = 0.02;
 	
-	public PlayerController(Vessel controlled, Handler handler, KeyHandler keyHandler) {
+	public PlayerController(Vessel controlled, Handler handler) {
 		super(controlled);
 		
 		this.handler = handler;

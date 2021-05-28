@@ -3,22 +3,24 @@ import java.awt.Graphics;
 
 public class Body extends Entity{
 
-	Color color;
-	int radius;
+	private Color color;
+	private double  radius;
+	private String name;
 	
 	private double angularVelocity;
 	private double distance;
 	private double angle;
 	private Body focus;
 	
-	public Body(Handler handler, Color color, 
-			int radius, double angularVelocity, 
+	public Body(Handler handler, String name, Color color,
+			double radius, double angularVelocity, 
 			double distance, double angle,
 			Body focus) {
 		super(handler);
 		
 		this.color = color;
 		this.radius = radius;
+		this.name = name;
 		
 		this.angularVelocity= angularVelocity;
 		this.distance = distance;

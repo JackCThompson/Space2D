@@ -8,8 +8,6 @@ public class Vessel extends Entity {
 	private Color color;
 	private int size;
 	
-	private double power;
-	
 	public Vessel(Handler handler, Color color, double[] location) {
 		super(handler);
 		this.color = color;
@@ -20,8 +18,7 @@ public class Vessel extends Entity {
 		acceleration = new double[] {0, 0};
 		velocity = new double[] {0, 0};
 		
-		size = 10;
-		power = 0.05;
+		size = 1;
 	}
 	
 	public void tick() {
@@ -33,11 +30,11 @@ public class Vessel extends Entity {
 		location[0] += velocity[0];
 		location[1] += velocity[1];
 		
-		if (Math.abs(velocity[0]) < 0.2) {
+		if (Math.abs(velocity[0]) < 0.02) {
 			velocity[0] = 0;
 		}
 		
-		if (Math.abs(velocity[1]) < 0.2) {
+		if (Math.abs(velocity[1]) < 0.02) {
 			velocity[1] = 0;
 		}
 	}

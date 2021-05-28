@@ -34,7 +34,7 @@ public class Game implements Runnable{
 		
 		handler = new Handler(this, keyHandler);
 		
-		system1 = new Field(handler, keyHandler);
+		system1 = FieldBuilder.loadMap("field1", handler);
 	}
 	
 	// Sets up the game and runs the tick and render loop until the game is over

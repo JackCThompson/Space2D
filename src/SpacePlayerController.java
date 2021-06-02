@@ -1,11 +1,16 @@
 
-public class PlayerController extends Controller{
+public class SpacePlayerController extends SpaceEntityController{
+
+	public SpacePlayerController(Vessel controlled) {
+		super(controlled);
+		// TODO Auto-generated constructor stub
+	}
 
 	private Handler handler;
 	
-	private double power = 0.02;
+	private double power = 100;
 	
-	public PlayerController(Vessel controlled, Handler handler) {
+	public SpacePlayerController(Vessel controlled, Handler handler) {
 		super(controlled);
 		
 		this.handler = handler;

@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Body extends Entity{
+public class Body extends SpaceEntity{
 
 	private Color color;
 	private double  radius;
@@ -46,7 +46,7 @@ public class Body extends Entity{
 		}
 	}
 	
-	public void render(Graphics g, Camera camera) {
+	public void render(Graphics g, SpaceCamera camera) {
 		g.setColor(color);
 		g.fillOval((int) (((location[0] - radius)) * camera.getZoom() - camera.getOffset()[0]), (int) (((location[1] - radius) * camera.getZoom() - camera.getOffset()[1])), (int)(2*radius*camera.getZoom()), (int)(2*radius*camera.getZoom()));
 	}

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
@@ -14,7 +15,9 @@ public class Game implements Runnable{
 	private Handler handler;
 	private KeyHandler keyHandler;
 	
+	private GameState gameState;
 	private Field system1;
+	private Surface surface1;
 	
 	// Constructs a Game object for a window of int:width and int:height
 	// Debug info will be printed to console if debug = true
@@ -31,10 +34,14 @@ public class Game implements Runnable{
 
 		keyHandler = new KeyHandler();
 		display.getJFrame().addKeyListener(keyHandler);
-		
+		Assets.init();
 		handler = new Handler(this, keyHandler);
 		
-		system1 = FieldBuilder.loadMap("field1", handler);
+		system1 = FieldBuilder.loadMap("field2", handler);
+		surface1 = new Surface(Color.ORANGE, handler);
+		gameState = surface1;
+		
+
 	}
 	
 	// Sets up the game and runs the tick and render loop until the game is over
@@ -83,7 +90,7 @@ public class Game implements Runnable{
 	// Calls tick() of all necessary objects
 	private void tick() {
 		keyHandler.tick();
-		system1.tick();
+		gameState.tick();
 	}
 	
 	// Clears screen and calls render(Graphics g) of all necessary objects
@@ -98,7 +105,7 @@ public class Game implements Runnable{
 		
 		g.clearRect(0, 0, width, height);
 		
-		system1.render(g);
+		gameState.render(g);
 		
 		bs.show();
 		g.dispose();

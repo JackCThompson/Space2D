@@ -1,6 +1,6 @@
 import java.awt.Graphics;
 
-public abstract class Entity {
+public abstract class SpaceEntity {
 
 	protected Handler handler;
 	
@@ -9,13 +9,13 @@ public abstract class Entity {
 	protected double[] acceleration;
 	protected double mass;
 	
-	public Entity(Handler handler) {
+	public SpaceEntity(Handler handler) {
 		this.handler = handler;
 	}
 	
 	public abstract void tick();
 	
-	public abstract void render(Graphics g, Camera camera);
+	public abstract void render(Graphics g, SpaceCamera camera);
 	
 	public double[] getLocation() {
 		return location;

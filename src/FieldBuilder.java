@@ -6,10 +6,10 @@ public class FieldBuilder {
 
 	// Returns a new Map loaded from data in the png and txt files called String:mapName.(png/txt)
 	public static Field loadMap(String fieldName, Handler handler) {
-		Scanner fieldData = new Scanner(Utils.loadFileAsString("res/" + fieldName + ".txt"));
+		Scanner fieldData = new Scanner(Utils.loadFileAsString("res/fields/" + fieldName + ".txt"));
 		
 		ArrayList<String> names = new ArrayList<String>();
-		ArrayList<Entity> bodies = new ArrayList<Entity>();
+		ArrayList<SpaceEntity> bodies = new ArrayList<SpaceEntity>();
 		
 		while (fieldData.hasNextLine()) {
 			Scanner item = new Scanner(fieldData.nextLine());

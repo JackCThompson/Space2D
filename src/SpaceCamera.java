@@ -1,17 +1,17 @@
 
-public class Camera {
+public class SpaceCamera {
 
 	private Handler handler;
 	
 	private double zoom;
 	private double[] center;
 	
-	private Entity focus;
+	private SpaceEntity focus;
 	
-	public Camera(Handler handler) {
+	public SpaceCamera(Handler handler) {
 		this.handler = handler;
 		
-		zoom = 1;
+		zoom = 0.01;
 		center = new double[] {0, 0};
 	}
 	
@@ -29,7 +29,7 @@ public class Camera {
 		}
 	}
 	
-	public void setFocus(Entity e) {
+	public void setFocus(SpaceEntity e) {
 		focus = e;
 	}
 	

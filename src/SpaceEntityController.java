@@ -1,9 +1,9 @@
 
-public abstract class Controller {
+public abstract class SpaceEntityController {
 
 	protected Vessel controlled;
 	
-	public Controller(Vessel controlled) {
+	public SpaceEntityController(Vessel controlled) {
 		this.controlled = controlled;
 	}
 	

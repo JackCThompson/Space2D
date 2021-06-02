@@ -1,9 +1,9 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Vessel extends Entity {
+public class Vessel extends SpaceEntity {
 
-	private Controller controller;
+	private SpaceEntityController controller;
 	
 	private Color color;
 	private int size;
@@ -18,7 +18,7 @@ public class Vessel extends Entity {
 		acceleration = new double[] {0, 0};
 		velocity = new double[] {0, 0};
 		
-		size = 1;
+		size = 10;
 	}
 	
 	public void tick() {
@@ -39,13 +39,13 @@ public class Vessel extends Entity {
 		}
 	}
 	
-	public void render(Graphics g, Camera camera) {
+	public void render(Graphics g, SpaceCamera camera) {
 		g.setColor(color);
 		g.fillRect((int) (((location[0] - size / 2)) * camera.getZoom() - camera.getOffset()[0]), (int) (((location[1] - size / 2) * camera.getZoom() - camera.getOffset()[1])), (int) (size *camera.getZoom()), (int)(size*camera.getZoom()));
 	
 	}
 	
-	public void setController(Controller controller) {
+	public void setController(SpaceEntityController controller) {
 		this.controller = controller;
 	}
 }

@@ -1,4 +1,5 @@
 
+
 public abstract class SpaceEntityController {
 
 	protected Vessel controlled;

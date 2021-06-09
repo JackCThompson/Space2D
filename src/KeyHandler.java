@@ -9,6 +9,7 @@ public class KeyHandler implements KeyListener{
 	public boolean A;
 	public boolean S;
 	public boolean D;
+	
 	public boolean SPACE;
 	public boolean UP;
 	public boolean DOWN;

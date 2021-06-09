@@ -1,23 +1,23 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-public abstract class SurfaceEntity {
+public abstract class SurfaceEntity extends Entity{
 
-	protected Handler handler;
-	
-	protected double[] location;
+	protected double speed;
 	
 	protected BufferedImage texture;
 	
+	protected SurfaceEntityController controller;
+	
 	public SurfaceEntity(Handler handler) {
-		this.handler = handler;
+		super(handler);
 	}
 	
 	public abstract void tick();
 	
-	public abstract void render(Graphics g);
+	public abstract void render(Graphics g, SurfaceCamera camera);
 	
-	public double[] getLocation() {
-		return location;
+	public double getSpeed() {
+		return speed;
 	}
 }

@@ -1,20 +1,10 @@
 
-public class SpaceCamera {
-
-	private Handler handler;
-	
-	private double zoom;
-	private double[] center;
-	
-	private SpaceEntity focus;
+public class SpaceCamera extends Camera {
 	
 	public SpaceCamera(Handler handler) {
-		this.handler = handler;
-		
-		zoom = 0.01;
-		center = new double[] {0, 0};
+		super(handler);
 	}
-	
+
 	public void tick() {
 		if (focus != null) {
 			center = focus.getLocation();
@@ -29,15 +19,12 @@ public class SpaceCamera {
 		}
 	}
 	
-	public void setFocus(SpaceEntity e) {
-		focus = e;
-	}
-	
 	public double[] getOffset() {
 		return new double[] {center[0] * zoom - handler.getWidth() / 2, center[1] * zoom - handler.getHeight() / 2};
 	}
 	
-	public double getZoom() {
-		return zoom;
+	public void setFocus(SpaceEntity e) {
+		focus = e;
 	}
+
 }

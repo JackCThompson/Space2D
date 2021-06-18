@@ -20,8 +20,6 @@ public class Human extends SurfaceEntity{
 		
 		location[0] += move[0];
 		location[1] += move[1];
-		
-		System.out.println(location[0] + " " + location[1]);
 	}
 	
 	public void render(Graphics g, SurfaceCamera camera) {

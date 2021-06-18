@@ -9,11 +9,10 @@ public class Surface extends GameState{
 	private Tile[][] map;
 	private Human player;
 	
-	private final double TILE_SIZE = 3;
+	private final int TILE_SIZE = 3; // in meters
 	
 	public Surface(Color c, Handler handler) {
 		super(handler);
-		camera = new SurfaceCamera(handler);
 		
 		t = new Tile[] {new Tile(Assets.sand1), new Tile(Assets.sand2), new Tile(Assets.sand3), new Tile(Assets.sand4)};
 
@@ -21,7 +20,7 @@ public class Surface extends GameState{
 			{t[0], t[0], t[0], t[0]}, 
 			{t[2], t[2], t[2], t[2]}};
 		player = new Human(handler);
-		camera = new SurfaceCamera(handler);
+		camera = new SurfaceCamera(handler, this);
 		camera.setFocus(player);
 	}
 	
@@ -31,15 +30,18 @@ public class Surface extends GameState{
 	
 	public void render(Graphics g) {
 		
-		int size = (int) (handler.getHeight() / camera.getHeight());
 
 		for (int i = 0; i < map.length; i++) {
 			for (int j = 0; j < map[i].length; j++) {
-				map[i][j].render(g, camera, i * size, j * size, size);
+				map[i][j].render(g, camera, i * TILE_SIZE, j * TILE_SIZE, TILE_SIZE);
 			}
 		}
 		
 		player.render(g, camera);
+	}
+	
+	public int getMapHeight() {
+		return map[0].length * TILE_SIZE;
 	}
 	
 }

@@ -10,7 +10,7 @@ public abstract class Camera {
 	public Camera(Handler handler) {
 		this.handler = handler;
 		
-		zoom = 0.01;
+		zoom = 1;
 		center = new double[] {0, 0};
 	}
 	

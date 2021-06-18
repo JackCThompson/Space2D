@@ -2,13 +2,15 @@ import java.awt.Graphics;
 
 public class Human extends SurfaceEntity{
 
+	private final double SIZE = 1.8;
+	
 	public Human(Handler handler) {
 		super(handler);
 		
 		controller = new SurfacePlayerController(this, handler);
-		location = new double[] {100, 100};
+		location = new double[] {2, 1};
 		
-		speed = 4;
+		speed = 0.0283;
 		
 		texture = Assets.commander;
 	}
@@ -23,7 +25,7 @@ public class Human extends SurfaceEntity{
 	}
 	
 	public void render(Graphics g, SurfaceCamera camera) {
-		g.drawImage(texture, (int) (location[0] - camera.getOffset()[0]), (int)(location[1] - camera.getOffset()[1]), texture.getWidth() * 2, texture.getHeight() * 2, null);
+		g.drawImage(texture, (int) (location[0] * camera.getZoom() - camera.getOffset()[0]), (int)(location[1] * camera.getZoom() - camera.getOffset()[1]), (int) (SIZE * camera.getZoom()), (int) (SIZE * camera.getZoom()), null);
 	}
 	
 }

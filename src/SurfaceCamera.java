@@ -1,17 +1,23 @@
 
-public class SurfaceCamera extends Camera{
+public class SurfaceCamera{
 
 	private double height;
+	private Surface surface;
 	
-	public SurfaceCamera(Handler handler) {
-		super(handler);
-		height = 4;
+	private double zoom;
+	
+	private Entity focus;
+	
+	private Handler handler;
+	
+	public SurfaceCamera(Handler handler, Surface surface) {
+		this.handler = handler;
+		
+		this.surface = surface;
+		
+		zoom = 100;
 	}
 	
-	public double getHeight() {
-		return height;
-	}
-
 	public void tick() {
 		
 	}
@@ -19,13 +25,24 @@ public class SurfaceCamera extends Camera{
 	public double[] getOffset() {
 		double[] offset = new double[2];
 
-		offset[0] = -handler.getWidth() / 2 + focus.getLocation()[0];
-		offset[1] = -handler.getHeight() / 2 + focus.getLocation()[1];
+		offset[0] = -handler.getWidth() / 2 + focus.getLocation()[0] * zoom;
+		offset[1] = -handler.getHeight() / 2 + focus.getLocation()[1] * zoom;
+		
+		if (offset[1] < 0) {
+			offset[1] = 0;
+		} else if (offset[1] + handler.getHeight() > surface.getMapHeight() * zoom) {
+			offset[1] = surface.getMapHeight() * zoom - handler.getHeight();
+		}
+		//else if (offset[1] + handler.getHeight() > surface.getMapHeight())
 		
 		return offset;
 	}
 	
 	public void setFocus(SurfaceEntity e) {
 		focus = e;
+	}
+	
+	public double getZoom() {
+		return zoom;
 	}
 }

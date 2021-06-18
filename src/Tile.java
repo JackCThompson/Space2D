@@ -13,6 +13,8 @@ public class Tile {
 		useColor = false;
 		
 		System.out.println(image);
+		
+		
 	}
 	
 	public Tile(Color c) {
@@ -30,7 +32,17 @@ public class Tile {
 			g.setColor(c);
 			g.fillRect(x, y, size, size);
 		} else {
-			g.drawImage(image, (int) (x - camera.getOffset()[0]), (int) (y - camera.getOffset()[1]), size, size, null);
+			g.drawImage(image, (int) (x * camera.getZoom() - camera.getOffset()[0]), (int) (y * camera.getZoom() - camera.getOffset()[1]), (int) (size * camera.getZoom()), (int) (size * camera.getZoom()), null);
 		}
 	}
+	
+//	public void render(Graphics g, SurfaceCamera camera, int x, int y) {
+//		
+//		if (useColor) {
+//			g.setColor(c);
+//			g.fillRect(x, y, size, size);
+//		} else {
+//			g.drawImage(image, (int) (x * camera.getZoom() - camera.getOffset()[0]), (int) (y * camera.getZoom() - camera.getOffset()[1]), (int) (size * camera.getZoom()), (int) (size * camera.getZoom()), null);
+//		}
+//	}
 }

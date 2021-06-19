@@ -38,7 +38,7 @@ public class Game implements Runnable{
 		handler = new Handler(this, keyHandler);
 		
 		system1 = FieldBuilder.loadMap("field2", handler);
-		surface1 = new Surface(Color.ORANGE, handler);
+		surface1 = PlanetBuilder.buildPlanet(Color.ORANGE, handler);
 		gameState = surface1;
 		
 

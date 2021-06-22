@@ -1,48 +1,23 @@
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
 public class Tile {
 
-	private boolean useColor;
 	private BufferedImage image;
-	private Color c;
+	private double[] location;
 	
-	public Tile(BufferedImage image) {
+	public Tile(BufferedImage image, double location[]) {
 		this.image = image;
-		useColor = false;
+		this.location = location;
+	}
+
+	public void render(Graphics g, SurfaceCamera camera) {
 		
-		System.out.println(image);
-		
-		
+		g.drawImage(image, (int) (location[0] * Surface.TILE_SIZE * camera.getZoom() - camera.getOffset()[0]), (int) (location[1] * Surface.TILE_SIZE * camera.getZoom() - camera.getOffset()[1]), (int) (Surface.TILE_SIZE * camera.getZoom()), (int) (Surface.TILE_SIZE * camera.getZoom()), null);
 	}
 	
-	public Tile(Color c) {
-		this.c = c;
-		useColor = true;
-	}
-	
-	public void tick() {
+	public void render(Graphics g, SurfaceCamera camera, int offset) {
 		
+		g.drawImage(image, (int) ((location[0] - offset)* Surface.TILE_SIZE * camera.getZoom() - camera.getOffset()[0]), (int) (location[1] * Surface.TILE_SIZE * camera.getZoom() - camera.getOffset()[1]), (int) (Surface.TILE_SIZE * camera.getZoom()), (int) (Surface.TILE_SIZE * camera.getZoom()), null);
 	}
-	
-	public void render(Graphics g, SurfaceCamera camera, int x, int y, int size) {
-		
-		if (useColor) {
-			g.setColor(c);
-			g.fillRect(x, y, size, size);
-		} else {
-			g.drawImage(image, (int) (x * camera.getZoom() - camera.getOffset()[0]), (int) (y * camera.getZoom() - camera.getOffset()[1]), (int) (size * camera.getZoom()), (int) (size * camera.getZoom()), null);
-		}
-	}
-	
-//	public void render(Graphics g, SurfaceCamera camera, int x, int y) {
-//		
-//		if (useColor) {
-//			g.setColor(c);
-//			g.fillRect(x, y, size, size);
-//		} else {
-//			g.drawImage(image, (int) (x * camera.getZoom() - camera.getOffset()[0]), (int) (y * camera.getZoom() - camera.getOffset()[1]), (int) (size * camera.getZoom()), (int) (size * camera.getZoom()), null);
-//		}
-//	}
 }

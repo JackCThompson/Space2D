@@ -33,8 +33,6 @@ public class SurfaceCamera{
 		} else if (offset[1] + handler.getHeight() > surface.getMapHeight() * zoom) {
 			offset[1] = surface.getMapHeight() * zoom - handler.getHeight();
 		}
-		//else if (offset[1] + handler.getHeight() > surface.getMapHeight())
-		
 		return offset;
 	}
 	

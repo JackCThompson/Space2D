@@ -1,4 +1,3 @@
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 
@@ -38,9 +37,8 @@ public class Game implements Runnable{
 		handler = new Handler(this, keyHandler);
 		
 		system1 = FieldBuilder.loadMap("field2", handler);
-		surface1 = PlanetBuilder.buildPlanet(Color.ORANGE, handler);
+		surface1 = new Surface(handler);
 		gameState = surface1;
-		
 
 	}
 	

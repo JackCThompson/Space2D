@@ -15,7 +15,7 @@ public class Field extends GameState{
 		
 		this.entities = entities;
 		
-		Vessel ship = new Vessel(handler, Color.GRAY, new double[] {45, 45});
+		Vessel ship = new Vessel(handler, new double[] {45, 45});
 		ship.setController(new SpacePlayerController(ship, handler));
 		
 		entities.add(ship);

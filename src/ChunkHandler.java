@@ -67,10 +67,9 @@ public class ChunkHandler {
 				int chunkIndex = (int) Math.floor(x / Chunk.CHUNK_LENGTH);
 				
 				if (chunks[chunkIndex] == null) {
-					System.out.println("generating chunk " + chunkIndex);
 					
 					Random rand = new Random(seed);
-					for (int r = 0; r < chunkIndex; r ++) {
+					for (int r = 0; r < chunkIndex; r++) {
 						rand.nextLong();
 					}
 					chunks[chunkIndex] = new Chunk(chunkHeight, rand.nextLong(), textures, chunkIndex);

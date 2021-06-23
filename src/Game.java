@@ -36,9 +36,9 @@ public class Game implements Runnable{
 		Assets.init();
 		handler = new Handler(this, keyHandler);
 		
-		system1 = FieldBuilder.loadMap("field2", handler);
+		system1 = FieldBuilder.loadMap("field1", handler);
 		surface1 = new Surface(handler);
-		gameState = surface1;
+		gameState = system1;
 
 	}
 	

@@ -1,29 +1,41 @@
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 public class Vessel extends SpaceEntity {
 
 	private SpaceEntityController controller;
 	
-	private Color color;
+	private BufferedImage baseTexture;
+	
 	private int size;
 	
-	public Vessel(Handler handler, Color color, double[] location) {
+	private double directionRads;
+	
+	public Vessel(Handler handler, double[] location) {
 		super(handler);
-		this.color = color;
 		super.location = location;
-		
-		this.controller = controller;
 		
 		acceleration = new double[] {0, 0};
 		velocity = new double[] {0, 0};
 		
 		size = 10;
+		
+		baseTexture = Assets.ship;
+		directionRads = 0;
 	}
 	
 	public void tick() {
 		acceleration = controller.getAcceleration();
+		
+		if (acceleration[0] != 0 || acceleration[1] != 0) {
+			double r = Math.sqrt(Math.pow(acceleration[0], 2) + Math.pow(acceleration[1], 2));
+			directionRads = Math.acos(-acceleration[1] / r);
+			
+			if (acceleration[0] < 0) {
+				directionRads = -directionRads;
+			}
+		}
 		
 		velocity[0] += acceleration[0];
 		velocity[1] += acceleration[1];
@@ -41,9 +53,11 @@ public class Vessel extends SpaceEntity {
 	}
 	
 	public void render(Graphics g, SpaceCamera camera) {
-		g.setColor(color);
-		g.fillRect((int) (((location[0] - size / 2)) * camera.getZoom() - camera.getOffset()[0]), (int) (((location[1] - size / 2) * camera.getZoom() - camera.getOffset()[1])), (int) (size *camera.getZoom()), (int)(size*camera.getZoom()));
-	
+		BufferedImage texture = Utils.rotateImageByDegrees(baseTexture, directionRads);
+
+		double scaler = (float) texture.getWidth() / baseTexture.getWidth();
+		
+		g.drawImage(texture, (int) ((location[0] - size * scaler / 2) * camera.getZoom() - camera.getOffset()[0]), (int) ((location[1] - size * scaler / 2) * camera.getZoom() - camera.getOffset()[1]), (int) (size * scaler * camera.getZoom()), (int) (size * scaler * camera.getZoom()), null);
 	}
 	
 	public void setController(SpaceEntityController controller) {

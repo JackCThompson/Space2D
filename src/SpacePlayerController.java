@@ -9,7 +9,7 @@ public class SpacePlayerController extends SpaceEntityController{
 
 	private Handler handler;
 	
-	private double power = 100;
+	private double power = 0.05;
 	
 	public SpacePlayerController(Vessel controlled, Handler handler) {
 		super(controlled);

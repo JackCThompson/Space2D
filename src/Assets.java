@@ -9,13 +9,16 @@ public class Assets {
 
 	public static TextureSheet planet1_sand;
 	public static TextureSheet commander_sheet;
+	public static TextureSheet ship_sheet;
 
 	public static BufferedImage sand1;
 	public static BufferedImage sand2;
 	public static BufferedImage sand3;
 	public static BufferedImage sand4;
-	
+
 	public static BufferedImage commander;
+
+	public static BufferedImage ship;
 
 	public static void init() {
 		
@@ -30,6 +33,10 @@ public class Assets {
 		
 //		commander = crop(0, 0, 1, 1, commander_sheet);
 		commander = commander_sheet.get();
+		
+		ship_sheet = new TextureSheet(ImageLoader.loadImage(new File("res/textures/ship/ship.png")));
+		
+		ship = ship_sheet.get();
 		
 	}
 	

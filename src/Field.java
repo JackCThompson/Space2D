@@ -31,8 +31,10 @@ public class Field extends GameState{
 	}
 	
 	public void render(Graphics g) {
-		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+//		g.setColor(Color.BLACK);
+//		g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+		
+		g.drawImage(Assets.background, 0, 0, handler.getWidth(), handler.getHeight(), null);
 		
 		for (SpaceEntity e:entities) {
 			e.render(g, camera);

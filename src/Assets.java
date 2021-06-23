@@ -10,6 +10,7 @@ public class Assets {
 	public static TextureSheet planet1_sand;
 	public static TextureSheet commander_sheet;
 	public static TextureSheet ship_sheet;
+	public static TextureSheet background_sheet;
 
 	public static BufferedImage sand1;
 	public static BufferedImage sand2;
@@ -19,6 +20,8 @@ public class Assets {
 	public static BufferedImage commander;
 
 	public static BufferedImage ship;
+	
+	public static BufferedImage background;
 
 	public static void init() {
 		
@@ -37,6 +40,10 @@ public class Assets {
 		ship_sheet = new TextureSheet(ImageLoader.loadImage(new File("res/textures/ship/ship.png")));
 		
 		ship = ship_sheet.get();
+		
+		background_sheet = new TextureSheet(ImageLoader.loadImage(new File("res/textures/background.jpg")));
+		
+		background = background_sheet.get();
 		
 	}
 	

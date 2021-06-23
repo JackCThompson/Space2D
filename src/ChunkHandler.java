@@ -66,8 +66,6 @@ public class ChunkHandler {
 				
 				int chunkIndex = (int) Math.floor(x / Chunk.CHUNK_LENGTH);
 				
-				System.out.println(chunkIndex);
-				
 				if (chunks[chunkIndex] == null) {
 					System.out.println("generating chunk " + chunkIndex);
 					

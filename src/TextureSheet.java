@@ -14,4 +14,8 @@ public class TextureSheet {
 	public BufferedImage crop(int x, int y, int width, int height) {
 		return sheet.getSubimage(x, y, width, height);
 	}
+	
+	public BufferedImage get() {
+		return sheet;
+	}
 }

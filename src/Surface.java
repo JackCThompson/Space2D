@@ -21,7 +21,7 @@ public class Surface extends GameState{
 		camera = new SurfaceCamera(handler, this);
 		camera.setFocus(player);
 		
-		this.chunkHandler = new ChunkHandler(MAP_LENGTH, MAP_HEIGHT, Color.GREEN, new Random(5).nextLong(), handler);
+		this.chunkHandler = new ChunkHandler(MAP_LENGTH, MAP_HEIGHT, Color.YELLOW, new Random(5).nextLong(), handler);
 	}
 	
 	public void tick() {
@@ -32,6 +32,8 @@ public class Surface extends GameState{
 		if (player.getLocation()[0] > MAP_LENGTH * TILE_SIZE) {
 			player.setLocation(new double[] {location[0] - MAP_LENGTH * TILE_SIZE, location[1]});
 		}
+		
+		camera.tick();
 	}
 	
 	public void render(Graphics g) {

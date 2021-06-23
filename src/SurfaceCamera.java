@@ -5,6 +5,7 @@ public class SurfaceCamera{
 	private Surface surface;
 	
 	private double zoom;
+	private double zoomSpeed;
 	
 	private Entity focus;
 	
@@ -16,10 +17,21 @@ public class SurfaceCamera{
 		this.surface = surface;
 		
 		zoom = 100;
+		zoomSpeed = 0.01;
 	}
 	
 	public void tick() {
+		if(handler.getKeyHandler().UP) {
+			zoom *= 1 + zoomSpeed;
+		}
 		
+		if(handler.getKeyHandler().DOWN) {
+			zoom *= 1 - zoomSpeed;
+		}
+		
+		if(zoom * surface.getMapHeight() < handler.getHeight()) {
+			zoom = handler.getHeight() / surface.getMapHeight();
+		}
 	}
 
 	public double[] getOffset() {

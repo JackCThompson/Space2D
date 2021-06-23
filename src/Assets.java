@@ -28,7 +28,8 @@ public class Assets {
 		
 		commander_sheet = new TextureSheet(ImageLoader.loadImage(new File("res/textures/commander/commander.png")));
 		
-		commander = crop(0, 0, 1, 1, commander_sheet);
+//		commander = crop(0, 0, 1, 1, commander_sheet);
+		commander = commander_sheet.get();
 		
 	}
 	

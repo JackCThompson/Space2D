@@ -5,11 +5,7 @@ public class SpaceCamera extends Camera {
 		super(handler);
 	}
 
-	public void tick() {
-		if (focus != null) {
-			center = focus.getLocation();
-		}
-		
+	public void tick() {		
 		if(handler.getKeyHandler().UP) {
 			zoom *= 1.02;
 		}
@@ -20,6 +16,11 @@ public class SpaceCamera extends Camera {
 	}
 	
 	public double[] getOffset() {
+		
+		if (focus != null) {
+			center = focus.getLocation();
+		}
+		
 		return new double[] {center[0] * zoom - handler.getWidth() / 2, center[1] * zoom - handler.getHeight() / 2};
 	}
 	

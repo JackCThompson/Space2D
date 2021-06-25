@@ -37,4 +37,5 @@ public class Chunk {
 	public void render(Graphics g, int[] location, SurfaceCamera camera, int offset) {
 		chunk[location[0] - Xmin][location[1]].render(g, camera, offset);
 	}
+	
 }
